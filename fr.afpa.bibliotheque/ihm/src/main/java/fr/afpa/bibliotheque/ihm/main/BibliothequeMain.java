@@ -5,15 +5,10 @@ package fr.afpa.bibliotheque.ihm.main;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import fr.afpa.bibliotheque.business.ExempleLivreBusiness;
 import fr.afpa.bibliotheque.business.TestBusiness;
-import fr.afpa.bibliotheque.business.impl.ExempleLivreBusinessImpl;
 import fr.afpa.bibliotheque.ihm.config.MainConfig;
-import javafx.application.Application;
-import javafx.stage.Stage;
 import lombok.extern.log4j.Log4j;
 
 /**
