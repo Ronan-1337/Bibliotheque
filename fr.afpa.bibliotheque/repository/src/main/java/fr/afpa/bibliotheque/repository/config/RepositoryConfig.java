@@ -20,4 +20,5 @@ DataSourceConfig.class
 @ComponentScan("fr.afpa.bibliotheque.repository")
 public class RepositoryConfig {
 
+	
 }
