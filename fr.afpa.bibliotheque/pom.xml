@@ -1,26 +1,35 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>fr.afpa.bibliotheque</groupId>
-  <artifactId>fr.afpa.bibliotheque</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>pom</packaging>
-  <name>Bibliothèque</name>
-  <description>Bibliothèque</description>
-  <modules>
-  	<module>service</module>
-  	<module>repository</module>
-  	<module>ihm</module>
-  	<module>business</module>
-  	<module>data</module>
-  	<module>utils</module>
-  	<module>jdbc</module>
-  </modules>
-  
-  <developers>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>fr.afpa.bibliotheque</groupId>
+	<artifactId>fr.afpa.bibliotheque</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>Bibliothèque</name>
+	<description>Bibliothèque</description>
+	<modules>
+		<module>service</module>
+		<module>repository</module>
+		<module>ihm</module>
+		<module>business</module>
+		<module>data</module>
+		<module>utils</module>
+		<module>jdbc</module>
+	</modules>
+
+	<developers>
 		<developer>
 			<name>Ronan LE GOFF</name>
 			<organization>AFPA</organization>
 			<email>roan.legoff1337@gmail.com</email>
+			<roles>
+				<role>developer</role>
+			</roles>
+		</developer>
+		<developer>
+			<name>Aharone Aferyat</name>
+			<email>aaferyat@gmail.com</email>
 			<roles>
 				<role>developer</role>
 			</roles>
@@ -36,9 +45,16 @@
 				<role>developer</role>
 			</roles>
 		</contributor>
+		<contributor>
+			<name>Aharone Aferyat</name>
+			<email>aaferyat@gmail.com</email>
+			<roles>
+				<role>developer</role>
+			</roles>
+		</contributor>
 	</contributors>
-  
-  <licenses>
+
+	<licenses>
 		<license>
 			<name>GNU Lesser General Public License (LGPL), Version 3</name>
 			<url>http://www.gnu.org/licenses/lgpl.txt</url>
@@ -54,7 +70,7 @@
 		<mysql.version>8.0.21</mysql.version>
 		<spring.version>4.1.4.RELEASE</spring.version>
 	</properties>
-	
+
 	<dependencies>
 		<dependency>
 			<groupId>org.openjfx</groupId>
@@ -138,6 +154,6 @@
 		</dependency>
 
 	</dependencies>
-	
-	
+
+
 </project>
