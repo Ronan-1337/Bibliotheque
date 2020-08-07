@@ -18,6 +18,7 @@ public class JDBCUtilisateurRepository implements UtilisateurRepository{
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
+	@SuppressWarnings("unused")
 	private static final class UtilisateurMapper implements RowMapper<Utilisateur> {
 		public Utilisateur mapRow(ResultSet rs, int rowNum) throws SQLException {
 		Utilisateur utilisateur = new Utilisateur();
@@ -25,14 +26,14 @@ public class JDBCUtilisateurRepository implements UtilisateurRepository{
 		utilisateur.setNom(rs.getString("nom"));
 		utilisateur.setPrenom(rs.getString("prenom"));
 		utilisateur.setRole(rs.getString("role"));
-		utilisateur.setDateNaissance(rs.getDate("datenaissance"));
-		utilisateur.setPseudo(rs.getNString("pseudo"));
-		utilisateur.setMotdepasse(rs.getNString("motdepasse"));
+		utilisateur.setDatenaissance(rs.getDate("datenaissance"));
+		utilisateur.setPseudo(rs.getString("pseudo"));
+		utilisateur.setMotdepasse(rs.getString("motdepasse"));
 		return utilisateur;
 		}
 	}
-	public Map<String, Object> selectByName(int id) {
-		return jdbcTemplate.queryForMap("SELECT idutilisateur FROM utilisateur WHERE  " );
+	public Map<String, Object> selectByName(Utilisateur u) {
+		return jdbcTemplate.queryForMap("SELECT idutilisateur FROM utilisateur WHERE nom =? && prenom =?", u.getNom(), u.getPrenom());
 	}
 	
 	public int insertByName(Utilisateur utilisateur) {

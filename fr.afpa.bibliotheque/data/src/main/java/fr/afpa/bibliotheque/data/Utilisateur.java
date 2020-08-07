@@ -16,7 +16,6 @@ public class Utilisateur {
 	private String motdepasse;
 	public Utilisateur(int id, String nom, String prenom, String role, Date datenaissance, String pseudo,
 			String motdepasse) {
-		super();
 		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
@@ -25,11 +24,10 @@ public class Utilisateur {
 		this.pseudo = pseudo;
 		this.motdepasse = motdepasse;
 	}
+	public Utilisateur(String nom, String prenom) {
+		this.nom = nom;
+		this.prenom = prenom;
+	}
 	public Utilisateur() {
 	}
-	public void setDateNaissance(Date date) {
-		// TODO Auto-generated method stub
-		
-	}
-	
 }	
