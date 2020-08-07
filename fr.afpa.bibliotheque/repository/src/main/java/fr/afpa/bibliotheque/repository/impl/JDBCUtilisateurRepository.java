@@ -1,10 +1,7 @@
 package fr.afpa.bibliotheque.repository.impl;
 
-import java.util.Objects;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import com.sun.javafx.collections.MappingChange.Map;
@@ -23,7 +20,13 @@ public class JDBCUtilisateurRepository implements UtilisateurRepository{
 		return (Map<String, Object>) jdbcTemplate.queryForMap("select * from enbois where id = ?", id);
 	}
 	
-	public int save( ) {
+	public int save(Utilisateur utilisateur ) {
 		return jdbcTemplate.update("insert into enbois (id, longueur, largeur, matiere) values(?,?,?,?)", utilisateur.getId(), utilisateur.getNom(), utilisateur.getPrenom(), utilisateur.getRole());
+	}
+
+	@Override
+	public int save(UtilisateurRepository utilisateur) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }
