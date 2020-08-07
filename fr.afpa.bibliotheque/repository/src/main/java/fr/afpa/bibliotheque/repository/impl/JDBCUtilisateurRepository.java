@@ -33,7 +33,7 @@ public class JDBCUtilisateurRepository implements UtilisateurRepository{
 		return utilisateur;
 		}
 	}
-	public Map<String, Object> selectByName(Utilisateur u) {
+	public Map<String, Object> idUtilisateurByNom(Utilisateur u) {
 		return jdbcTemplate.queryForMap("SELECT idutilisateur FROM utilisateur WHERE nom =? && prenom =?", u.getNom(), u.getPrenom());
 	}
 	
@@ -61,7 +61,7 @@ public class JDBCUtilisateurRepository implements UtilisateurRepository{
 		return jdbcTemplate.queryForObject("SELECT date FROM utilisateur WHERE idutilisateur =?", new Object[] { id }, Date.class);
 	}
 
-	public int insertByName(Utilisateur utilisateur) {
+	public int insertUtilisateur(Utilisateur utilisateur) {
 		return jdbcTemplate.update("INSERT INTO utilisateur (idutilisateur, nom, prenom, role, datenaissance, pseudo, motdepasse) values(?,?,?,?,?,?,?)", 
 				utilisateur.getId(), 
 				utilisateur.getNom(), 

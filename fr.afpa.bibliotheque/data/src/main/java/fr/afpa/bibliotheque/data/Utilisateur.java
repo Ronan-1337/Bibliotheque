@@ -42,5 +42,4 @@ public class Utilisateur {
 		user.motdepasse = JDBCUtilisateurRepository.motdepasseUtilisateurById(id);
 		return user;
 	}
-	
 }	
