@@ -2,6 +2,7 @@ package fr.afpa.bibliotheque.data;
 
 import java.sql.Date;
 
+import fr.afpa.bibliotheque.repository.impl.JDBCUtilisateurRepository;
 import lombok.Data;
 
 @Data
@@ -30,4 +31,16 @@ public class Utilisateur {
 	}
 	public Utilisateur() {
 	}
+	public Utilisateur getutilisateurById(int id) {
+		Utilisateur user = new Utilisateur();
+		user.id = id;
+		user.nom = JDBCUtilisateurRepository.nomUtilisateurById(id);
+		user.prenom = JDBCUtilisateurRepository.prenomUtilisateurById(id);
+		user.pseudo = JDBCUtilisateurRepository.pseudoUtilisateurById(id);
+		user.role = JDBCUtilisateurRepository.roleUtilisateurById(id);
+		user.datenaissance = JDBCUtilisateurRepository.dateUtilisateurById(id);
+		user.motdepasse = JDBCUtilisateurRepository.motdepasseUtilisateurById(id);
+		return user;
+	}
+	
 }	
