@@ -1,5 +1,6 @@
 package fr.afpa.bibliotheque.repository.impl;
 
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Map;
@@ -16,7 +17,7 @@ import fr.afpa.bibliotheque.repository.UtilisateurRepository;
 public class JDBCUtilisateurRepository implements UtilisateurRepository{
 	
 	@Autowired
-	private JdbcTemplate jdbcTemplate;
+	private static JdbcTemplate jdbcTemplate;
 	
 	@SuppressWarnings("unused")
 	private static final class UtilisateurMapper implements RowMapper<Utilisateur> {
@@ -36,8 +37,39 @@ public class JDBCUtilisateurRepository implements UtilisateurRepository{
 		return jdbcTemplate.queryForMap("SELECT idutilisateur FROM utilisateur WHERE nom =? && prenom =?", u.getNom(), u.getPrenom());
 	}
 	
+	public static String nomUtilisateurById(int id) {
+		return jdbcTemplate.queryForObject("SELECT nom FROM utilisateur WHERE idutilisateur =?", new Object[] { id }, String.class);
+	}
+
+	public static String prenomUtilisateurById(int id) {
+		return jdbcTemplate.queryForObject("SELECT prenom FROM utilisateur WHERE idutilisateur =?", new Object[] { id }, String.class);
+	}
+	
+	public static String pseudoUtilisateurById(int id) {
+		return jdbcTemplate.queryForObject("SELECT pseudo FROM utilisateur WHERE idutilisateur =?", new Object[] { id }, String.class);
+	}
+	
+	public static String roleUtilisateurById(int id) {
+		return jdbcTemplate.queryForObject("SELECT role FROM utilisateur WHERE idutilisateur =?", new Object[] { id }, String.class);
+	}
+	
+	public static String motdepasseUtilisateurById(int id) {
+		return jdbcTemplate.queryForObject("SELECT motdepasse FROM utilisateur WHERE idutilisateur =?", new Object[] { id }, String.class);
+	}
+	
+	public static Date dateUtilisateurById(int id) {
+		return jdbcTemplate.queryForObject("SELECT date FROM utilisateur WHERE idutilisateur =?", new Object[] { id }, Date.class);
+	}
+
 	public int insertByName(Utilisateur utilisateur) {
-		return jdbcTemplate.update("INSERT INTO utilisateur (idutilisateur, nom, prenom, role, datenaissance, pseudo, motdepasse) values(?,?,?,?,?,?,?)", utilisateur.getId(), utilisateur.getNom(), utilisateur.getPrenom(), utilisateur.getRole(), utilisateur.getPseudo(), utilisateur.getDatenaissance(), utilisateur.getMotdepasse());
+		return jdbcTemplate.update("INSERT INTO utilisateur (idutilisateur, nom, prenom, role, datenaissance, pseudo, motdepasse) values(?,?,?,?,?,?,?)", 
+				utilisateur.getId(), 
+				utilisateur.getNom(), 
+				utilisateur.getPrenom(), 
+				utilisateur.getRole(), 
+				utilisateur.getPseudo(), 
+				utilisateur.getDatenaissance(), 
+				utilisateur.getMotdepasse());
 		
 	}
 }
