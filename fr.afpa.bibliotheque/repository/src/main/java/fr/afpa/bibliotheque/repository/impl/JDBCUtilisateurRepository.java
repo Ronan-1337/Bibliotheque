@@ -23,10 +23,4 @@ public class JDBCUtilisateurRepository implements UtilisateurRepository{
 	public int save(Utilisateur utilisateur ) {
 		return jdbcTemplate.update("insert into enbois (id, longueur, largeur, matiere) values(?,?,?,?)", utilisateur.getId(), utilisateur.getNom(), utilisateur.getPrenom(), utilisateur.getRole());
 	}
-
-	@Override
-	public int save(UtilisateurRepository utilisateur) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 }
