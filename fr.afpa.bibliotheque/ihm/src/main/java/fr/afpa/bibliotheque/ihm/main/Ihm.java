@@ -5,6 +5,7 @@ package fr.afpa.bibliotheque.ihm.main;
 
 import java.sql.Date;
 
+import fr.afpa.bibliotheque.data.Utilisateur;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -19,6 +20,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class Ihm extends Application{
@@ -26,8 +28,7 @@ public class Ihm extends Application{
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		try {
-			Date naissance = new Date(8, 8, 2020);
-			//Utilisateur currentUser = new Utilisateur(0, "invité", "invité", naissance, "invité", "invité", "invité");
+			Utilisateur currentUser = new Utilisateur("invité", "invité");
 			primaryStage.setTitle("Bibliothèque");
 	        primaryStage.getIcons().add(new Image("img/Bibliothèque.png"));
 			
@@ -59,6 +60,8 @@ public class Ihm extends Application{
 			Button guestConnectBtn = new Button("Connexion invité");
 			grd_login.add(guestConnectBtn, 0, 4);
 			
+			Button testUserGetBtn = new Button("test du get de user");
+			
 			primaryStage.setScene(sc_login);
 			primaryStage.show();
 			
@@ -68,11 +71,16 @@ public class Ihm extends Application{
 			grd_search.setVgap(10);
 			grd_search.setPadding(new Insets(25,25,25,25));
 			Scene sc_search = new Scene(grd_search);
-			
-			TextField searchTextField = new TextField();
-			searchTextField.setPromptText("Tapez votre recherche");
-			grd_search.add(searchTextField, 0, 1, 4, 1);
+	
+//			TextField searchTextField = new TextField();
+//			searchTextField.setPromptText("Tapez votre recherche");
+//			grd_search.add(searchTextField, 0, 1, 4, 1);
 
+			// modif scene search pour tester get user
+			Text testu = new Text();
+			testu.setText(currentUser.toString());
+			grd_search.add(testu, 0, 1, 4, 1);
+			
 			// action des bouttons
 			guestConnectBtn.setOnAction(new EventHandler<ActionEvent>() {
 				@Override
@@ -82,6 +90,16 @@ public class Ihm extends Application{
 					primaryStage.setTitle("Bibliothèque - Recherche");
 				}
 			});
+			
+			testUserGetBtn.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+	            public void handle(ActionEvent e) {
+					grd_search.add(iv,0,0,4,1);
+					primaryStage.setScene(sc_search);
+					primaryStage.setTitle("Bibliothèque - Recherche");
+				}
+			});
+			
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
