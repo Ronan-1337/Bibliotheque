@@ -14,9 +14,9 @@ public class UtilisateurMapper implements RowMapper<Utilisateur>{
 		Utilisateur utilisateur = new Utilisateur();
 
 		utilisateur.setId(rs.getInt("id"));
-		utilisateur.setTitle(rs.getString("title"));
-		utilisateur.setCategory(rs.getString("category"));
-		utilisateur.setDateMiseEnRayon(rs.getDate("dateMiseEnRayon"));
+		utilisateur.setNom(rs.getString("nom"));
+		utilisateur.setPrenom(rs.getString("prenom"));
+		utilisateur.setRole(rs.getString("role"));
 		return utilisateur;
 
 	}
